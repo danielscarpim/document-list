@@ -1,0 +1,66 @@
+{
+    "body": {
+      "User": {
+        "username": "tester@gmail.com",
+        "defaultAddress": {
+          "country": "DE",
+          "address1": "Teststr",
+          "address2": "23",
+          "postcode": "13647",
+          "city": "Berlin"
+        },
+        "defaultBankAccount": {
+          "iban": "DE9010023455444598780",
+          "bank": "Deutsche Bank Privat und Geschäftskd Berlin II",
+          "bic": "DEUTDEDB101"
+        },
+        "hasBiwAccount": 1,
+        "onboardingStateMachine": [
+          {
+            "state": "personalDetails",
+            "name": "investor_onboard"
+          }
+        ],
+        "customerId": "11332632",
+        "biwCustomerId": "5025503",
+        "states": {
+          "investor_onboard": "personalDetails",
+          "loan_offer": "blockLoan"
+        },
+        "roles": [
+          "ROLE_INVESTOR",
+          "ROLE_INTERNAL"
+        ],
+        "uuid": "xl.u.558c21d31fe139",
+        "profile": {
+          "firstName": "John",
+          "lastName": "Dai",
+          "phoneNumber": "(+49)1765387898",
+          "otherPhones": [],
+          "nationality": "DE",
+          "piwikId": "f4db37cb59296013",
+          "currency": "EUR",
+          "newsletterPerEmail": 0,
+          "newsletterPerPhone": 0,
+          "acceptDataProcessing": 0,
+          "postKyc": 1,
+          "videoKyc": 0,
+          "isVerifiedKyc": 1,
+          "docusignReturnUrl": null,
+          "updatedAt": "2016-12-23T09:01:12+00:00"
+        },
+        "borrowerCashFlows": []
+      }
+    },
+    "statusCode": 200,
+    "reasonPhrase": "OK",
+    "effectiveUrl": "https://apply.crosslend.io/user/info",
+    "messages": [],
+    "alerts": [],
+    "machineId": "w#$5ferf22",
+    "running": "YW1pLTQ2NDBlNzI5",
+    "serverTime": "2018-03-29T13:46:31+00:00",
+    "requestId": "e35e4ef8",
+    "version": "2dwe3rr34r"
+  }
+  
