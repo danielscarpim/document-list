@@ -9,14 +9,18 @@ class List extends Component {
   }
 
   componentDidMount() {
-    fetch('../data/documents')
+    fetch('http://localhost:3000/data/documents')
       .then(results => {
-        console.log(results);
+        return results.json();
+      }).then((data) => {
+        console.log('data: ', data);
       })
 
-    fetch('../data/info')
+    fetch('http://localhost:3000/data/info')
       .then(results => {
-        console.log(results);
+        return results.json();
+      }).then((data) => {
+        console.log('data: ', data);
       })
   }
 
