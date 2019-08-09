@@ -17,13 +17,12 @@ class App extends Component {
       .then(results => results.json())
       .then((data) => {
         this.setState({documents: data.documents});
-        console.log(this.state);
       })
 
     fetch('http://localhost:3000/data/info')
       .then(results => results.json())
       .then((data) => {
-        this.setState({user: data.body.user });
+        this.setState({user: data.body.user});
       })
   }
 
