@@ -8,7 +8,8 @@ class App extends Component {
     this.state = {
       loading: true,
       documents: [],
-      user: {}
+      user: {},
+      sorting: null
     }
     this.sortByName = this.sortByName.bind(this);
   }
@@ -17,18 +18,18 @@ class App extends Component {
     const documents = this.state.documents;
 
     documents.sort((a, b) => {
-      var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      var nameA = a.name.toUpperCase();
+      var nameB = b.name.toUpperCase();
       if (nameA < nameB) {
-        return -1;
+        return this.state.sorting === 'asc' ? -1 : 1;
       }
       if (nameA > nameB) {
-        return 1;
+        return this.state.sorting === 'asc' ? 1 : -1;
       }
 
       return 0;
     });
-
+    this.state.sorting !== 'asc' ? this.setState({ sorting: 'asc' }) : this.setState({ sorting: 'desc' })
     this.setState(documents);
   }
 
