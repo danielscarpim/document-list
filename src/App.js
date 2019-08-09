@@ -12,6 +12,7 @@ class App extends Component {
       sorting: null
     }
     this.sortByName = this.sortByName.bind(this);
+    this.sortByDate = this.sortByDate.bind(this);
   }
 
   sortByName() {
@@ -28,6 +29,16 @@ class App extends Component {
       }
 
       return 0;
+    });
+    this.state.sorting !== 'asc' ? this.setState({ sorting: 'asc' }) : this.setState({ sorting: 'desc' })
+    this.setState(documents);
+  }
+
+  sortByDate() {
+    const documents = this.state.documents;
+
+    documents.sort((a, b) => {
+      return this.state.sorting === 'asc' ? new Date(b.date) - new Date(a.date) : new Date(a.date) - new Date(b.date);
     });
     this.state.sorting !== 'asc' ? this.setState({ sorting: 'asc' }) : this.setState({ sorting: 'desc' })
     this.setState(documents);
@@ -50,6 +61,7 @@ class App extends Component {
   render() {
     return (<div className="App">
               <button onClick={this.sortByName}>sort by name</button>
+              <button onClick={this.sortByDate}>sort by date</button>
               <List documents={this.state.documents} />
             </div>)
   }
