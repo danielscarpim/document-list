@@ -9,6 +9,7 @@ class App extends Component {
       loading: true,
       documents: [],
       user: {},
+      dates: [],
       sorting: null
     }
     this.sortByName = this.sortByName.bind(this);
@@ -41,7 +42,7 @@ class App extends Component {
       return this.state.sorting === 'asc' ? new Date(a.date) - new Date(b.date) : new Date(b.date) - new Date(a.date);
     });
     this.state.sorting !== 'asc' ? this.setState({ sorting: 'asc' }) : this.setState({ sorting: 'desc' })
-    this.setState(documents);
+    this.setState({documents});
   }
 
   componentWillMount() {
@@ -50,6 +51,7 @@ class App extends Component {
       .then((data) => {
         this.setState({documents: data.documents});
         this.sortByDate();
+        this.setState({dates: data.documents.map((document => document.date))});
       })
 
     fetch('http://localhost:3000/data/info')
