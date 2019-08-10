@@ -11,11 +11,15 @@ class App extends Component {
       documents: [],
       user: {},
       sorting: null,
-      filteredDates: null
+      dateRange: {
+        startDate: null,
+        endDate: null
+      }
     }
     this.dates = [];
     this.sortByName = this.sortByName.bind(this);
     this.sortByDate = this.sortByDate.bind(this);
+    this.filterByDate = this.filterByDate.bind(this);
   }
 
   sortByName() {
@@ -53,7 +57,12 @@ class App extends Component {
       .then((data) => {
         this.setState({documents: data.documents});
         this.sortByDate();
-        this.dates = this.state.documents.map((document) => document.date)
+        this.dates = this.state.documents.map((document) => document.date);
+        const defaultDates = {
+          endDate: this.dates[0],
+          startDate: this.dates[this.dates.length - 1]
+        }
+        this.setState({dateRange: defaultDates})
       })
 
     fetch('http://localhost:3000/data/info')
@@ -64,16 +73,16 @@ class App extends Component {
   }
 
   filterByDate(selectedDates) {
-    console.log('selectedDates: ', selectedDates);
+    this.setState({dateRange: selectedDates})
   }
 
   render() {
     return (<div className="App">
               <button onClick={this.sortByName}>sort by name</button>
               <button onClick={this.sortByDate}>sort by date</button>
-              <DateSelector dates={this.dates} filterByDate={this.filterByDate} title="Start Date" name="startDate"/>
-              <DateSelector dates={this.dates} filterByDate={this.filterByDate} title="End Date" name="endDate"/>
-              <List documents={this.state.documents} />
+              <DateSelector dates={this.dates} dateRange={this.state.dateRange} filterByDate={this.filterByDate} title="Start Date" name="startDate"/>
+              <DateSelector dates={this.dates} dateRange={this.state.dateRange} filterByDate={this.filterByDate} title="End Date" name="endDate"/>
+              <List documents={this.state.documents} dateRange={this.state.dateRange}/>
             </div>)
   }
 }

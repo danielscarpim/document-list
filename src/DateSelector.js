@@ -9,10 +9,7 @@ class DateSelector extends Component {
   }
 
   handleChange(event) {
-    const selectedDates = {
-      endDate: this.props.dates[0],
-      startDate: this.props.dates[this.props.dates.length - 1]
-    }
+    const selectedDates = this.props.dateRange;
     
     selectedDates[this.props.name] = event.target.value;
 
