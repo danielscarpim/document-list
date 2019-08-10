@@ -38,7 +38,7 @@ class App extends Component {
     const documents = this.state.documents;
 
     documents.sort((a, b) => {
-      return this.state.sorting === 'asc' ? new Date(b.date) - new Date(a.date) : new Date(a.date) - new Date(b.date);
+      return this.state.sorting === 'asc' ? new Date(a.date) - new Date(b.date) : new Date(b.date) - new Date(a.date);
     });
     this.state.sorting !== 'asc' ? this.setState({ sorting: 'asc' }) : this.setState({ sorting: 'desc' })
     this.setState(documents);
@@ -49,6 +49,7 @@ class App extends Component {
       .then(results => results.json())
       .then((data) => {
         this.setState({documents: data.documents});
+        this.sortByDate();
       })
 
     fetch('http://localhost:3000/data/info')
