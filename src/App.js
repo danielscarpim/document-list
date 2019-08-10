@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import List from './List';
+import DateSelector from './DateSelector';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +10,6 @@ class App extends Component {
       loading: true,
       documents: [],
       user: {},
-      dates: [],
       sorting: null
     }
     this.sortByName = this.sortByName.bind(this);
@@ -51,7 +51,6 @@ class App extends Component {
       .then((data) => {
         this.setState({documents: data.documents});
         this.sortByDate();
-        this.setState({dates: data.documents.map((document => document.date))});
       })
 
     fetch('http://localhost:3000/data/info')
@@ -61,10 +60,17 @@ class App extends Component {
       })
   }
 
+  onDateSelectChange(event) {
+    console.log('event: ', event);
+    console.log('event: ', event.currentTarget);
+  }
+
   render() {
     return (<div className="App">
               <button onClick={this.sortByName}>sort by name</button>
               <button onClick={this.sortByDate}>sort by date</button>
+              <DateSelector documents={this.state.documents} onDateSelectChange={this.onDateSelectChange} title="Start Date" name="startDate"/>
+              <DateSelector documents={this.state.documents} onDateSelectChange={this.onDateSelectChange} title="End Date" name="endDate"/>
               <List documents={this.state.documents} />
             </div>)
   }

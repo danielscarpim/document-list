@@ -4,7 +4,7 @@ class List extends Component {
 
   displayDate(date) {
     const d = new Date(date);
-    return `${('0' + d.getDate()).slice(-2)}-${('0' + d.getDate()).slice(-2)}-${d.getFullYear()}`;
+    return `${('0' + d.getDate()).slice(-2)}-${('0' + d.getMonth()).slice(-2)}-${d.getFullYear()}`;
   }
 
   render() {
