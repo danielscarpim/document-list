@@ -1,11 +1,18 @@
+:root {
+  --dark-blue:#064acb;
+  --light-blue: #366ed8;
+  --orange: #f3a953;
+  --light-gray: #f2f3f3;
+}
+
 .document-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid gray;
+  border-top: 1px solid var(--light-gray);
 }
 
 .document-list__item {
   padding: 6px 12px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid var(--light-gray);
 }
