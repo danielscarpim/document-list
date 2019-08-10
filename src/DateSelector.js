@@ -5,10 +5,10 @@ import { renderToString } from 'react-dom/server'
 class DateSelector extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
+    this.onSelectChange = this.onSelectChange.bind(this);
   }
 
-  handleChange(event) {
+  onSelectChange(event) {
     const selectedDates = this.props.dateRange;
     
     selectedDates[this.props.name] = event.target.value;
@@ -32,7 +32,7 @@ class DateSelector extends Component {
     return (
       <div>
         <span>{this.props.title}</span>
-        <select onChange={this.handleChange} value={selectedOption}>
+        <select onChange={this.onSelectChange} value={selectedOption}>
           <Options dates={this.props.dates}/>
         </select>
       </div>
