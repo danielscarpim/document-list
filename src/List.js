@@ -16,7 +16,8 @@ class List extends Component {
 
       return (
         <li className="document-list__item" key={index}>
-          {document.name} - <DisplayDate date={document.date}/>
+          <div className="item__column item__column--name">{document.name}</div>
+          <div className="item__column item__column--date"><DisplayDate date={document.date} /></div>
         </li>
       )
     });

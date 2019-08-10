@@ -3,16 +3,46 @@
   --light-blue: #366ed8;
   --orange: #f3a953;
   --light-gray: #f2f3f3;
+  --white: #fff;
+
+  --padding-default: 20px;
+}
+
+body, html, #root, .App {
+  height: 100%;
+}
+
+.App {
+  background: var(--light-gray);
+}
+
+button {
+  padding: 10px;
+}
+
+.document-list__controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: var(--padding-default);
+  background: var(--light-blue);
 }
 
 .document-list {
+  padding: var(--padding-default);
   list-style: none;
   margin: 0;
-  padding: 0;
+  background: var(--white);
   border-top: 1px solid var(--light-gray);
 }
 
 .document-list__item {
-  padding: 6px 12px;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
   border-bottom: 1px solid var(--light-gray);
+}
+
+.item__column {
+  padding: 8px 12px;
 }
