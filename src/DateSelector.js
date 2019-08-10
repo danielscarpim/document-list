@@ -27,10 +27,12 @@ class DateSelector extends Component {
       })
     }
 
+    const selectedOption = this.props.dateRange[this.props.name] || '';
+
     return (
       <div>
         <span>{this.props.title}</span>
-        <select onChange={this.handleChange}>
+        <select onChange={this.handleChange} value={selectedOption}>
           <Options dates={this.props.dates}/>
         </select>
       </div>
