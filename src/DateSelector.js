@@ -1,40 +1,30 @@
 import React, {Component} from 'react';
+import DisplayDate from './DisplayDate';
+import { renderToString } from 'react-dom/server'
 
 class DateSelector extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.state = {
-      startDate: props.documents[0],
-      endDate: props.documents[this.props.documents.length]
-    }
-  }
-
-  displayDate(date) {
-    const d = new Date(date);
-    return `${('0' + d.getDate()).slice(-2)}-${('0' + d.getMonth()).slice(-2)}-${d.getFullYear()}`;
   }
 
   handleChange(event) {
     const selectedDates = {
-      endDate: this.props.documents[0].date,
-      startDate: this.props.documents[this.props.documents.length - 1].date
+      endDate: this.props.dates[0],
+      startDate: this.props.dates[this.props.dates.length - 1]
     }
     
     selectedDates[this.props.name] = event.target.value;
-    console.log('selectedDates: ', selectedDates);
+
+    this.props.filterByDate(selectedDates);
   }
   
   render() {
-    const dates = this.props.documents.map((document) => document.date)
-
     const Options = (props) => {
       return props.dates.map((date, index) => {
-        const displayDate = this.displayDate(date);
-
         return (
           <option key={index} value={date}>
-            {displayDate}
+            {renderToString(<DisplayDate date={date} />)}
           </option>
         )
       })
@@ -44,7 +34,7 @@ class DateSelector extends Component {
       <div>
         <span>{this.props.title}</span>
         <select onChange={this.handleChange}>
-          <Options dates={dates}/>
+          <Options dates={this.props.dates}/>
         </select>
       </div>
     )
