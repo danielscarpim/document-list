@@ -10,7 +10,10 @@ class App extends Component {
       loading: true,
       documents: [],
       user: {},
-      sorting: null,
+      sorting: {
+        byDate: null,
+        byName: null
+      },
       dateRange: {
         startDate: null,
         endDate: null
@@ -29,15 +32,18 @@ class App extends Component {
       var nameA = a.name.toUpperCase();
       var nameB = b.name.toUpperCase();
       if (nameA < nameB) {
-        return this.state.sorting === 'asc' ? -1 : 1;
+        return this.state.sorting.byName === 'asc' ? -1 : 1;
       }
       if (nameA > nameB) {
-        return this.state.sorting === 'asc' ? 1 : -1;
+        return this.state.sorting.byName === 'asc' ? 1 : -1;
       }
 
       return 0;
     });
-    this.state.sorting !== 'asc' ? this.setState({ sorting: 'asc' }) : this.setState({ sorting: 'desc' })
+    this.state.sorting.byName !== 'asc' 
+      ? this.setState({ sorting: { byName: 'asc', byDate: null }}) 
+      : this.setState({ sorting: { byName:'desc', byDate: null }})
+    
     this.setState(documents);
   }
 
@@ -45,9 +51,14 @@ class App extends Component {
     const documents = this.state.documents;
 
     documents.sort((a, b) => {
-      return this.state.sorting === 'asc' ? new Date(a.date) - new Date(b.date) : new Date(b.date) - new Date(a.date);
+      return this.state.sorting.byDate === 'asc' 
+        ? new Date(a.date) - new Date(b.date) 
+        : new Date(b.date) - new Date(a.date);
     });
-    this.state.sorting !== 'asc' ? this.setState({ sorting: 'asc' }) : this.setState({ sorting: 'desc' })
+    this.state.sorting.byDate !== 'asc' 
+      ? this.setState({ sorting: { byDate: 'asc', byName: null } }) 
+      : this.setState({ sorting: { byDate: 'desc', byName: null } })
+    
     this.setState({documents});
   }
 
@@ -88,10 +99,14 @@ class App extends Component {
         </div>
         <div className="document-list__header">
           <div className="item__column item__column--name">
-            <button className="button" onClick={this.sortByName}>Name</button>
+            <button className="button" onClick={this.sortByName}>
+              <span>Name</span>
+            </button>
           </div>
           <div className="item__column item__column--date">
-            <button className="button" onClick={this.sortByDate}>Date</button>
+            <button className="button" onClick={this.sortByDate}>
+              <span>Date</span>
+            </button>
           </div>
         </div>
         <List documents={this.state.documents} dateRange={this.state.dateRange}/>
