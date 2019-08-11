@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import List from './List';
 import DateSelector from './DateSelector';
 import './App.css';
+import ColumnSortButton from './ColumnSortButton';
 
 class App extends Component {
   constructor(props) {
@@ -99,14 +100,10 @@ class App extends Component {
         </div>
         <div className="document-list__header">
           <div className="item__column item__column--name">
-            <button className="button" onClick={this.sortByName}>
-              <span>Name</span>
-            </button>
+            <ColumnSortButton onClick={this.sortByName} title="Name" name="byName" />
           </div>
           <div className="item__column item__column--date">
-            <button className="button" onClick={this.sortByDate}>
-              <span>Date</span>
-            </button>
+            <ColumnSortButton onClick={this.sortByDate} title="Date" name="byDate" />
           </div>
         </div>
         <List documents={this.state.documents} dateRange={this.state.dateRange}/>
