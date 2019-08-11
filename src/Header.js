@@ -4,6 +4,7 @@ export default class Header extends Component {
   render() {
     const profile = this.props.user.profile || {};
 
+    // This component does not update anything. it just display some data from the user info
     return (
       <div className="page-header">
         <nav className="page-header__nav">

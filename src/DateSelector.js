@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import DisplayDate from './DisplayDate';
 import { renderToString } from 'react-dom/server'
 
+// This component is just a select field with all the dates in the documents,
+// this is just to make it easier to see the filter updating the data.
+// On a real application a proper date picker would be used, and any date could be selected.
+
 class DateSelector extends Component {
   constructor(props) {
     super(props);

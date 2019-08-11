@@ -4,6 +4,7 @@ export default class ColumnSortButton extends Component {
   render() {
     const sortOrder = this.props.sortOrder || 'none';
 
+    // Sort order icon display and position is controlled by css
     return (
       <button className="button" onClick={ this.props.onClick } >
         <span className="button__text">{this.props.title}</span>

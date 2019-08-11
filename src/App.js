@@ -10,6 +10,8 @@ class App extends Component {
     super(props);
     this.url = window.location.href;
     this.state = {
+      // This variable is not used. It would be updated after fetch is finished,
+      // but on this demo it would not even be noticeable
       loading: true,
       documents: [],
       user: {},
@@ -22,12 +24,16 @@ class App extends Component {
         endDate: null
       }
     }
+    // This is not part of the state as it's never supposed to be updated
+    // is just used on the DateSelector component
     this.dates = [];
+
     this.sortByName = this.sortByName.bind(this);
     this.sortByDate = this.sortByDate.bind(this);
     this.filterByDate = this.filterByDate.bind(this);
   }
 
+  // Lots of repeated code on both sortBy functions. This could definitely be optimized
   sortByName() {
     const documents = this.state.documents;
 
@@ -65,7 +71,16 @@ class App extends Component {
     this.setState({documents});
   }
 
+  // This just filters the current state. On a real application this would probably
+  // trigger another fetch with filtering parameters
+  filterByDate(selectedDates) {
+    this.setState({ dateRange: selectedDates })
+  }
+
+  // Fetching all data in the main component.
+  // A better approach would be to fetch the data on the component that needed it.
   componentWillMount() {
+    // Fetching as from the local environment to avoid CORS erros
     fetch(`${this.url}data/documents`)
       .then(results => results.json())
       .then((data) => {
@@ -84,10 +99,6 @@ class App extends Component {
       .then((data) => {
         this.setState({user: data.body.User});
       })
-  }
-
-  filterByDate(selectedDates) {
-    this.setState({dateRange: selectedDates})
   }
 
   render() {

@@ -4,6 +4,9 @@ import DisplayDate from './DisplayDate';
 class List extends Component {
 
   render() {
+    // filtering is handled on the list itself.
+    // This is a bad approach, as the list still receives items that may not be displayed
+    // Proper filtering should be done on the backend or on the parent component
     const documents = this.props.documents.map((document, index) => {
 
       if (new Date(document.date) < new Date(this.props.dateRange.startDate)) {
