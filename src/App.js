@@ -79,13 +79,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="document-list__controls">
-          <button onClick={this.sortByName}>sort by name</button>
-          <button onClick={this.sortByDate}>sort by date</button>
-          <DateSelector dates={this.dates} dateRange={this.state.dateRange} filterByDate={this.filterByDate} title="Start Date" name="startDate"/>
-          <DateSelector dates={this.dates} dateRange={this.state.dateRange} filterByDate={this.filterByDate} title="End Date" name="endDate"/>
+        <div className="document-list__filter">
+          <div className="filter__title">Filter</div>
+          <div className="filter__input">
+            <DateSelector dates={this.dates} dateRange={this.state.dateRange} filterByDate={this.filterByDate} title="Start Date" name="startDate" />
+            <DateSelector dates={this.dates} dateRange={this.state.dateRange} filterByDate={this.filterByDate} title="End Date" name="endDate" />
+          </div>
         </div>
-          <List documents={this.state.documents} dateRange={this.state.dateRange}/>
+        <div className="document-list__header">
+          <div className="item__column item__column--name">
+            <button className="button" onClick={this.sortByName}>Name</button>
+          </div>
+          <div className="item__column item__column--date">
+            <button className="button" onClick={this.sortByDate}>Date</button>
+          </div>
+        </div>
+        <List documents={this.state.documents} dateRange={this.state.dateRange}/>
       </div>
     )}
 }

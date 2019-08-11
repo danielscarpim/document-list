@@ -12,37 +12,78 @@ body, html, #root, .App {
   height: 100%;
 }
 
+button:focus {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
 .App {
   background: var(--light-gray);
 }
 
-button {
-  padding: 10px;
-}
-
-.document-list__controls {
+.document-list__filter,
+.filter__input {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.document-list__filter {
   padding: var(--padding-default);
   background: var(--light-blue);
+  color: var(--white);
+}
+
+.filter__title {
+  flex: 1;
+  font-weight: bold;
+}
+
+.date-select {
+  margin-left: 20px;
+}
+
+.date-select .label {
+  margin-right: 10px;
 }
 
 .document-list {
-  padding: var(--padding-default);
   list-style: none;
+  padding: 0;
   margin: 0;
   background: var(--white);
   border-top: 1px solid var(--light-gray);
 }
 
-.document-list__item {
+.document-list__item, 
+.document-list__header {
   display: flex;
   flex-direction: row;
+  padding: 10px var(--padding-default);
+}
+
+.document-list__header {
+  background: var(--light-gray);
+}
+
+.document-list__header .button {
+  background: none;
+  width: 100%;
   padding: 0;
+  border: 0;
+  text-align: left;
+  font-size: 1em;
+  font-weight: bold;
+  opacity: .4;
+}
+
+.document-list__item {
   border-bottom: 1px solid var(--light-gray);
 }
 
 .item__column {
-  padding: 8px 12px;
+  flex: 1;
 }

@@ -30,9 +30,9 @@ class DateSelector extends Component {
     const selectedOption = this.props.dateRange[this.props.name] || '';
 
     return (
-      <div>
-        <span>{this.props.title}</span>
-        <select onChange={this.onSelectChange} value={selectedOption}>
+      <div className="date-select">
+        <label className="label" htmlFor={this.props.name}>{this.props.title}</label>
+        <select id={this.props.name} onChange={this.onSelectChange} value={selectedOption}>
           <Options dates={this.props.dates}/>
         </select>
       </div>
