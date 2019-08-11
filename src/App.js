@@ -7,6 +7,7 @@ import ColumnSortButton from './ColumnSortButton';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.url = window.location.href;
     this.state = {
       loading: true,
       documents: [],
@@ -64,7 +65,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    fetch('http://localhost:3000/data/documents')
+    fetch(`${this.url}data/documents`)
       .then(results => results.json())
       .then((data) => {
         this.setState({documents: data.documents});
@@ -77,7 +78,7 @@ class App extends Component {
         this.setState({dateRange: defaultDates})
       })
 
-    fetch('http://localhost:3000/data/info')
+    fetch(`${this.url}data/info`)
       .then(results => results.json())
       .then((data) => {
         this.setState({user: data.body.user});
