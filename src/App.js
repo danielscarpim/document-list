@@ -3,6 +3,7 @@ import List from './List';
 import DateSelector from './DateSelector';
 import './App.css';
 import ColumnSortButton from './ColumnSortButton';
+import Header from './Header';
 
 class App extends Component {
   constructor(props) {
@@ -92,6 +93,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header user={this.state.user}/>
         <div className="document-list__filter">
           <div className="filter__title">Filter</div>
           <div className="filter__input">

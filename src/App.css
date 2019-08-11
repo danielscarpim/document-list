@@ -21,8 +21,44 @@ button {
   cursor: pointer;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .App {
   background: var(--light-gray);
+}
+
+.page-header {
+  background: var(--light-blue);
+}
+
+.page-header__nav,
+.page-header__menu {
+  display: flex;
+  flex-direction: row;
+  background: var(--white);
+}
+
+.menu__item {
+  padding: 15px var(--padding-default);
+  color: var(--light-blue);
+  font-size: .8em;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.menu__item--active {
+  background: var(--light-blue);
+  color: var(--white);
+}
+
+.page-header__title {
+  margin: 0;
+  padding: var(--padding-default);
+  color: var(--white);
 }
 
 .document-list__filter,
@@ -52,9 +88,6 @@ button {
 }
 
 .document-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   background: var(--white);
   border-top: 1px solid var(--light-gray);
 }
