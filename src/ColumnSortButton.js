@@ -6,7 +6,7 @@ export default class ColumnSortButton extends Component {
 
     return (
       <button className="button" onClick={ this.props.onClick } >
-        <span>{this.props.title}</span>
+        <span className="button__text">{this.props.title}</span>
         <div className={`sort-order sort-order--${sortOrder}`}></div>
       </button>
     )

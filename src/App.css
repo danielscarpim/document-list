@@ -4,6 +4,7 @@
   --orange: #f3a953;
   --light-gray: #f2f3f3;
   --white: #fff;
+  --black: #000;
 
   --padding-default: 20px;
 }
@@ -78,6 +79,14 @@ button {
   font-size: 1em;
   font-weight: bold;
   opacity: .4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.button__text {
+  flex: 1;
 }
 
 .document-list__item {
@@ -86,4 +95,24 @@ button {
 
 .item__column {
   flex: 1;
+}
+
+.sort-order {
+  display: none;
+  opacity: .6;
+  margin-left: 10px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid var(--black);
+  border-right: 2px solid var(--black);
+}
+
+.sort-order--asc {
+  display: block;
+  transform: rotate(-45deg);
+}
+
+.sort-order--desc {
+  display: block;
+  transform: rotate(135deg);
 }
