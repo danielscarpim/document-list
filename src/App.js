@@ -82,7 +82,7 @@ class App extends Component {
     fetch(`${this.url}data/info`)
       .then(results => results.json())
       .then((data) => {
-        this.setState({user: data.body.user});
+        this.setState({user: data.body.User});
       })
   }
 
