@@ -100,10 +100,10 @@ class App extends Component {
         </div>
         <div className="document-list__header">
           <div className="item__column item__column--name">
-            <ColumnSortButton onClick={this.sortByName} title="Name" name="byName" />
+            <ColumnSortButton onClick={this.sortByName} sortOrder={this.state.sorting.byName} title="Name"/>
           </div>
           <div className="item__column item__column--date">
-            <ColumnSortButton onClick={this.sortByDate} title="Date" name="byDate" />
+            <ColumnSortButton onClick={this.sortByDate} sortOrder={this.state.sorting.byDate} title="Date"/>
           </div>
         </div>
         <List documents={this.state.documents} dateRange={this.state.dateRange}/>
